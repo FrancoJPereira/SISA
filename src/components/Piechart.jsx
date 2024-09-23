@@ -25,12 +25,6 @@ const PieChart = () => {
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
           'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -46,6 +40,7 @@ const PieChart = () => {
   };
 
   const options = {
+    maintainAspectRatio: false, // Permite que el gráfico se ajuste al tamaño del contenedor
     responsive: true,
     plugins: {
       legend: {
@@ -55,14 +50,7 @@ const PieChart = () => {
             size: 12,
           },
         },
-      },
-      title: {
-        display: true,
-        text: 'DEPARTAMENTO DE SAN RAFAEL / CARGA DE DATOS DEL DENGUE',
-        font: {
-          size: 24,
-        },
-      },
+      },  
     },
     elements: {
       arc: {
@@ -73,7 +61,8 @@ const PieChart = () => {
 
   return (
     <div className="outer-container">
-      <div className="chart-container">
+      <p style={{ fontWeight: 'bold'}}>&nbsp;&nbsp;&nbsp;SAN RAFAEL</p>
+      <div className="chart-container" style={{ height: '500px', width: '100%' }}> {/* Tamaño específico para el contenedor del gráfico */}
         <Pie data={data} options={options} />
       </div>
     </div>

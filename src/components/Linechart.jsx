@@ -2,6 +2,7 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, Tooltip, Legend, LineElement, Title, LinearScale, PointElement, LineController } from 'chart.js';
 
+// Registro de los componentes necesarios en Chart.js
 ChartJS.register(LineElement, Tooltip, Legend, Title, LinearScale, PointElement, LineController);
 
 const LineChart = () => {
@@ -21,6 +22,7 @@ const LineChart = () => {
   };
 
   const options = {
+    maintainAspectRatio: false, // Permite que el gráfico se ajuste al tamaño del contenedor
     responsive: true,
     plugins: {
       legend: {
@@ -50,7 +52,14 @@ const LineChart = () => {
     },
   };
 
-  return <Line data={data} options={options} />;
+  return (
+    <div className="outer-container">
+      <p style={{ fontWeight: 'bold'}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SAN RAFAEL</p>
+      <div className="chart-container" style={{ height: '500px', width: '100%' }}> {/* Tamaño específico para el contenedor del gráfico */}
+        <Line data={data} options={options} />
+      </div>
+    </div>
+  );
 };
 
 export default LineChart;

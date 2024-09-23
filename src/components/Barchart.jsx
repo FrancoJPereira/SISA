@@ -15,9 +15,17 @@ const Barchart = () => {
     }],
   };
 
+  const options = {
+    maintainAspectRatio: false, // Permite que el gráfico ignore el aspect ratio del canvas y utilice el tamaño completo especificado.
+    responsive: true, // Asegura que el gráfico sea responsivo.
+  };
+
   return (
-    <div style={{ width: '600px', height: '400px' }}>
-      <Bar data={data} />
+    <div className="outer-container">
+      <p style={{ fontWeight: 'bold' }}>&nbsp;&nbsp;&nbsp;&nbsp;SAN RAFAEL</p>
+      <div className="chart-container" style={{ height: '500px', width: '100%' }}> {/* Contenedor con tamaño específico */}
+        <Bar data={data} options={options} />
+      </div>
     </div>
   );
 };

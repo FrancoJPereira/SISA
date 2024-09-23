@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaDatabase, FaQuestionCircle, FaUser } from 'react-icons/fa'; 
+import Dashboard from './Dashborad'; // Corrige la ruta aquí
 import Home from './Home'; 
 import Register from './Register'; 
 import Piechart from './Piechart';
@@ -8,6 +9,7 @@ import BarChart from './Barchart';
 import LineChart from "./Linechart";
 import Caso from './Caso';
 import Ayuda from './Ayuda';
+
 
 const Layout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +50,7 @@ const Layout = () => {
               </Link>
             </li>
             <li className="nav-list-item">
-              <Link to="/Dashboard" className="nav-link">
+              <Link to="/dashboard" className="nav-link"> {/* Cambiar la ruta a /dashboard */}
                 <FaDatabase />
                 <span className="link-text">Datos</span>
               </Link>
@@ -64,48 +66,32 @@ const Layout = () => {
       </div>
 
       <div className="content" style={{ display: 'flex'}}>
-  {showWelcome && (
-   <div className="welcome-message">
-   <h1>BIENVENIDO</h1>
-   <p style={{ fontWeight: 'bold' }}>Sistema Integrado de Salud de Argentina.</p>
-   <p>Una plataforma diseñada para transformar la manera en que los ciudadanos acceden a los servicios de salud en todo el país. 
-   Nuestro objetivo es ofrecer una experiencia fluida y eficiente, garantizando que todos los habitantes de Argentina puedan acceder a la atención médica necesaria sin importar su ubicación geográfica.
-   Le invitamos a navegar por el menú a su izquierda.</p> 
-   <p style={{ fontWeight: 'bold' }}>¡Gracias por ser parte de esta iniciativa!</p>
- </div>
- 
-  )}
-</div>
-
-
-        <div className="home-inicio">
-          {location.pathname === '/' && <Home />} {/* Home */}
-          {location.pathname === '/register' && <Register />} {/* Register */}
-          {location.pathname === '/caso' && <Caso />} {/* Caso */}
-          {location.pathname === '/ayuda' && <Ayuda />} {/* Ayuda */}
-        </div>
-        
-        {location.pathname === "/Piechart" && (
-          <div className="chart-graficos">
-            <Piechart /> 
-          </div>  
-          )}    
-        {location.pathname === "/Barchart" && (
-          <div className="chart-graficos">
-            <BarChart />
-        </div>        
+        {showWelcome && (
+          <div className="welcome-message">
+            <h1>BIENVENIDO</h1>
+            <p style={{ fontWeight: 'bold' }}>Sistema Integrado de Salud de Argentina.</p>
+            <p>Una plataforma diseñada para transformar la manera en que los ciudadanos acceden a los servicios de salud en todo el país. 
+              Nuestro objetivo es ofrecer una experiencia fluida y eficiente, garantizando que todos los habitantes de Argentina puedan acceder a la atención médica necesaria sin importar su ubicación geográfica.
+              Le invitamos a navegar por el menú a su izquierda.</p> 
+            <p style={{ fontWeight: 'bold' }}>¡Gracias por ser parte de esta iniciativa!</p>
+          </div>
         )}
+      </div>
 
-        {location.pathname === "/Linechart" && (
-          <div className="chart-graficos">
-            <LineChart />
-        </div>        
-        )}
+      <div className="home-inicio">
+        {location.pathname === '/' && <Home />} {/* Home */}
+        {location.pathname === '/register' && <Register />} {/* Register */}
+        {location.pathname === '/caso' && <Caso />} {/* Caso */}
+        {location.pathname === '/ayuda' && <Ayuda />} {/* Ayuda */}
+        {location.pathname === '/dashboard' && <Dashboard />} {/* Dashboard */}
+      </div>
 
-        
-        
-      </div>  
-    
+      <div className="chart-graficos">
+        {location.pathname === "/piechart" && <Piechart />} {/* Piechart */}
+        {location.pathname === "/barchart" && <BarChart />} {/* BarChart */}
+        {location.pathname === "/linechart" && <LineChart />} {/* LineChart */}
+      </div>
+    </div>  
   );
 };
 
